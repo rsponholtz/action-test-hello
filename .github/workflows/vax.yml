@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    name: Verifies that we can talk to the vax
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: run uname
+        uses: rsponholtz/NetBSD-Vax-Action@1.0
+        with:
+          path: /usr/src/sys/
+          run: |
+            make
